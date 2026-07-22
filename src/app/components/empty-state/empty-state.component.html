@@ -1,0 +1,15 @@
+<div class="empty">
+  <div class="empty__icon" aria-hidden="true">{{ icon() }}</div>
+  <h2 class="empty__title">{{ title() }}</h2>
+  @if (body()) {
+    <p class="empty__body">{{ body() }}</p>
+  }
+  @if (actionLabel(); as label) {
+    <button type="button" class="btn btn--primary" (click)="action.emit()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+        <path d="M12 5v14M5 12h14" />
+      </svg>
+      <span>{{ label }}</span>
+    </button>
+  }
+</div>

@@ -1,0 +1,19 @@
+<div class="toast-stack" aria-live="polite" aria-atomic="true">
+  @for (toast of toastService.toasts(); track toast.id) {
+    <button
+      type="button"
+      class="toast"
+      [class]="'toast--' + toast.kind"
+      (click)="toastService.dismiss(toast.id)"
+    >
+      <span class="toast__icon" aria-hidden="true">
+        @switch (toast.kind) {
+          @case ('success') { ✓ }
+          @case ('error') { ! }
+          @default { i }
+        }
+      </span>
+      <span class="toast__msg">{{ toast.message }}</span>
+    </button>
+  }
+</div>

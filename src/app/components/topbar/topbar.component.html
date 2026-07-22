@@ -1,0 +1,37 @@
+<header class="topbar">
+  <div class="brand">
+    <span class="brand__mark" aria-hidden="true">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6l-8-4Z" />
+        <circle cx="12" cy="11" r="2.2" />
+        <path d="M12 13.2V16" />
+      </svg>
+    </span>
+    <div class="brand__text">
+      <span class="brand__name">Key<span class="brand__accent">Nest</span></span>
+      <span class="brand__tag">Local-first vault</span>
+    </div>
+  </div>
+
+  <div class="topbar__actions">
+    <button type="button" class="btn btn--ghost" (click)="triggerImport()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
+      </svg>
+      <span class="btn__label">Import</span>
+    </button>
+    <button type="button" class="btn btn--ghost" (click)="export.emit()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 9l5-5 5 5M12 4v12" />
+      </svg>
+      <span class="btn__label">Export</span>
+    </button>
+    <input
+      #importInput
+      type="file"
+      accept="application/json,.json"
+      class="visually-hidden"
+      (change)="onFileChosen($event)"
+    />
+  </div>
+</header>
