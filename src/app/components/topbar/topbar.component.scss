@@ -7,7 +7,7 @@
   justify-content: space-between;
   gap: 1rem;
   padding: 0.9rem clamp(1rem, 4vw, 2.5rem);
-  background: rgba(6, 8, 10, 0.7);
+  background: rgba(13, 22, 32, 0.72);
   border-bottom: 1px solid var(--kn-border);
   backdrop-filter: blur(14px);
 }
@@ -23,9 +23,10 @@
   place-items: center;
   width: 2.5rem;
   height: 2.5rem;
-  border-radius: 12px;
+  border-radius: 14px;
   color: var(--kn-accent-ink);
-  background: linear-gradient(135deg, var(--kn-accent-hover), #0f9d6e);
+  background: linear-gradient(135deg, var(--kn-accent-hover), var(--kn-amber));
+  box-shadow: 0 8px 20px -12px rgba(63, 185, 107, 0.8);
 }
 
 .brand__text {

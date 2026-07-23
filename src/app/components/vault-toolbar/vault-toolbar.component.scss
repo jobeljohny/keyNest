@@ -20,13 +20,14 @@
 
 .search__input {
   width: 100%;
-  padding: 0.8rem 0.95rem 0.8rem 2.7rem;
+  padding: 0.85rem 0.95rem 0.85rem 2.7rem;
   border-radius: var(--kn-radius-sm);
-  border: 1px solid var(--kn-border);
-  background: var(--kn-bg-elev);
+  border: 1px solid transparent;
+  background: var(--kn-surface);
   color: var(--kn-text);
   font: inherit;
   font-size: 0.95rem;
+  box-shadow: var(--kn-shadow-sm);
   transition:
     border-color 0.15s ease,
     box-shadow 0.15s ease;

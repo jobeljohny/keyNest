@@ -1,36 +1,47 @@
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
-/* global tokens + base styles — black canvas, deep-emerald accent (dark only) */
+/* global tokens + base styles — dark slate canvas, natural-green primary +
+   amber secondary accent (dark only). Flat, softly-elevated surfaces. */
 
 :root {
-  /* canvas & elevated surfaces — near-black, faintly green-neutral so the
-     accent reads as belonging rather than pasted on */
-  --kn-bg: #06080a;
-  --kn-bg-elev: #0d1114;
-  --kn-surface: #12171a;
-  --kn-surface-hover: #182025;
-  --kn-border: #212a2e;
-  --kn-border-strong: #2f3a3f;
+  /* canvas & elevated surfaces — deep NAVY (matches reference), cards sit
+     clearly above via a lighter fill + real drop shadow */
+  --kn-bg: #102030;
+  --kn-bg-elev: #16293a;
+  --kn-surface: #1f3648;
+  --kn-surface-2: #27394b;
+  --kn-surface-hover: #2b4256;
+  --kn-border: #2a3f52;
+  --kn-border-strong: #395064;
 
-  --kn-text: #e9eeeb;
-  --kn-text-muted: #94a19a;
-  --kn-text-faint: #5f6d66;
+  --kn-text: #eef2f6;
+  --kn-text-muted: #9fb0c0;
+  --kn-text-faint: #6b7f92;
 
-  /* action / focus / selection — deep emerald (was indigo #6d78ff) */
-  --kn-accent: #10b981;
-  --kn-accent-hover: #34d399;
-  --kn-accent-soft: rgba(16, 185, 129, 0.14);
-  /* ink for text placed on the accent fill: dark, since emerald is light
-     enough that white would fail AA at body size */
-  --kn-accent-ink: #05130d;
+  /* primary action / focus / selection — vivid grass green (reference).
+     #20874c passes WCAG AA with WHITE text (4.53:1) while staying vivid. */
+  --kn-accent: #20874c;
+  --kn-accent-hover: #23924f;
+  --kn-accent-soft: rgba(38, 164, 100, 0.16);
+  --kn-accent-ink: #ffffff; /* reference uses white text on the green fill */
+
+  /* secondary accent — warm amber: highlights, reveal/attention, brand */
+  --kn-amber: #f0a13d;
+  --kn-amber-hover: #f7b357;
+  --kn-amber-soft: rgba(240, 161, 61, 0.14);
+  --kn-amber-ink: #201200; /* dark ink for text on the amber fill (AA) */
 
   --kn-danger: #f2646d;
   --kn-danger-soft: rgba(242, 100, 109, 0.14);
-  --kn-success: #34d399;
+  --kn-success: #2fae66;
 
-  --kn-radius: 16px;
-  --kn-radius-sm: 10px;
-  --kn-shadow: 0 12px 40px -12px rgba(0, 0, 0, 0.72);
+  /* crisp, near-rectangular corners like the reference */
+  --kn-radius: 8px;
+  --kn-radius-sm: 6px;
+  --kn-radius-btn: 4px;
+  /* strong, defined elevation — cards read as clearly lifted panels */
+  --kn-shadow: 0 22px 48px -20px rgba(0, 0, 0, 0.78);
+  --kn-shadow-sm: 0 14px 30px -18px rgba(0, 0, 0, 0.7);
 }
 
 * {
@@ -45,8 +56,8 @@ body {
 body {
   margin: 0;
   background:
-    radial-gradient(1200px 600px at 15% -10%, rgba(16, 185, 129, 0.13), transparent 60%),
-    radial-gradient(1000px 500px at 100% 0%, rgba(52, 211, 153, 0.06), transparent 55%),
+    radial-gradient(1100px 560px at 12% -8%, rgba(63, 185, 107, 0.08), transparent 58%),
+    radial-gradient(900px 480px at 100% 4%, rgba(240, 161, 61, 0.05), transparent 55%),
     var(--kn-bg);
   color: var(--kn-text);
   font-family: 'Sora', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -87,8 +98,8 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.6rem 1.05rem;
-  border-radius: var(--kn-radius-sm);
+  padding: 0.7rem 1.2rem;
+  border-radius: var(--kn-radius-btn);
   border: 1px solid transparent;
   font: inherit;
   font-size: 0.9rem;
@@ -100,12 +111,14 @@ body {
     background 0.15s ease,
     border-color 0.15s ease,
     transform 0.12s ease,
+    box-shadow 0.15s ease,
     color 0.15s ease;
 }
 .btn:active {
   transform: translateY(1px);
 }
 
+/* solid green primary — vivid grass green with white text (reference look). */
 .btn--primary {
   background: var(--kn-accent);
   color: var(--kn-accent-ink);
@@ -114,9 +127,18 @@ body {
   background: var(--kn-accent-hover);
 }
 
+/* warm amber secondary accent */
+.btn--amber {
+  background: var(--kn-amber);
+  color: var(--kn-amber-ink);
+}
+.btn--amber:hover {
+  background: var(--kn-amber-hover);
+}
+
 .btn--ghost {
-  background: transparent;
-  border-color: var(--kn-border-strong);
+  background: var(--kn-surface-2);
+  border-color: transparent;
   color: var(--kn-text-muted);
 }
 .btn--ghost:hover {
@@ -127,7 +149,7 @@ body {
 .btn--danger {
   background: var(--kn-danger-soft);
   color: var(--kn-danger);
-  border-color: rgba(255, 92, 114, 0.35);
+  border-color: transparent;
 }
 .btn--danger:hover {
   background: var(--kn-danger);
@@ -137,8 +159,8 @@ body {
 .icon-btn {
   display: inline-grid;
   place-items: center;
-  width: 2.2rem;
-  height: 2.2rem;
+  width: 2.3rem;
+  height: 2.3rem;
   border-radius: var(--kn-radius-sm);
   border: 1px solid transparent;
   background: transparent;
@@ -154,18 +176,20 @@ body {
   color: var(--kn-text);
 }
 
+/* flat inputs: filled surface, no visible resting border (reference style) */
 .input {
   width: 100%;
-  padding: 0.7rem 0.85rem;
+  padding: 0.78rem 0.95rem;
   border-radius: var(--kn-radius-sm);
-  border: 1px solid var(--kn-border);
+  border: 1px solid transparent;
   background: var(--kn-bg-elev);
   color: var(--kn-text);
   font: inherit;
   font-size: 0.92rem;
   transition:
     border-color 0.15s ease,
-    box-shadow 0.15s ease;
+    box-shadow 0.15s ease,
+    background 0.15s ease;
 }
 .input::placeholder {
   color: var(--kn-text-faint);
