@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="KeyNest">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#16293a"/>
+      <stop offset="1" stop-color="#102030"/>
+    </linearGradient>
+    <linearGradient id="key" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2fae66"/>
+      <stop offset="1" stop-color="#20874c"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Rounded app tile -->
+  <rect x="0" y="0" width="512" height="512" rx="112" fill="url(#bg)"/>
+  <rect x="5" y="5" width="502" height="502" rx="107" fill="none" stroke="#2a3f52" stroke-width="10"/>
+
+  <!-- Key: circular bow + diagonal shaft with teeth -->
+  <g fill="none" stroke="url(#key)" stroke-width="38" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="192" cy="192" r="66"/>
+    <path d="M239 239 L360 360"/>
+    <path d="M326 326 L358 294"/>
+    <path d="M360 360 L394 326"/>
+  </g>
+</svg>
