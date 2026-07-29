@@ -25,7 +25,17 @@ export class VaultService {
     return this.db.credentials.orderBy('updatedAt').reverse().toArray();
   }
 
+  // case-insensitive, trimmed name match; excludeId lets an edit keep its own name
+  async nameExists(name: string, excludeId?: number): Promise<boolean> {
+    const target = name.trim().toLowerCase();
+    const all = await this.db.credentials.toArray();
+    return all.some((c) => c.id !== excludeId && c.name.trim().toLowerCase() === target);
+  }
+
   async add(input: Pick<Credential, 'name' | 'username' | 'password'>): Promise<number> {
+    if (await this.nameExists(input.name)) {
+      throw new Error(`A credential named “${input.name.trim()}” already exists.`);
+    }
     const now = Date.now();
     return this.db.credentials.add({
       ...input,
@@ -38,6 +48,9 @@ export class VaultService {
     id: number,
     input: Pick<Credential, 'name' | 'username' | 'password'>,
   ): Promise<void> {
+    if (await this.nameExists(input.name, id)) {
+      throw new Error(`A credential named “${input.name.trim()}” already exists.`);
+    }
     await this.db.credentials.update(id, { ...input, updatedAt: Date.now() });
   }
 

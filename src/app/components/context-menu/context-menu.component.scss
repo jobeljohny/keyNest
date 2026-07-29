@@ -8,6 +8,31 @@
   color: var(--kn-text);
 }
 
+/* footer-style trigger — mirrors the card's `.action` buttons so the share
+   menu sits flush with Copy user / Copy pass */
+.menu__trigger-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.44rem 0.65rem;
+  border-radius: var(--kn-radius-sm);
+  border: 1px solid transparent;
+  background: var(--kn-bg-elev);
+  color: var(--kn-text-muted);
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+.menu__trigger-action:hover,
+.menu__trigger-action--on {
+  background: var(--kn-surface-hover);
+  color: var(--kn-text);
+}
+
 .menu__panel {
   position: absolute;
   top: calc(100% + 0.35rem);

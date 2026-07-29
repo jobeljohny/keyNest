@@ -4,6 +4,7 @@ import {
   ElementRef,
   HostListener,
   computed,
+  effect,
   inject,
   input,
   output,
@@ -39,13 +40,30 @@ export class ContextMenuComponent {
   readonly label = input<string>('Options');
   /** Horizontal edge the panel aligns to. */
   readonly align = input<'start' | 'end'>('end');
+  /**
+   * Trigger appearance. `kebab` (default) is the ⋮ icon button; `action`
+   * renders a footer-style button with `triggerIcon` + `triggerLabel` text so
+   * the menu can sit inline with the card's other footer actions.
+   */
+  readonly variant = input<'kebab' | 'action'>('kebab');
+  /** SVG path `d` for the `action` trigger's icon (24x24 stroked viewBox). */
+  readonly triggerIcon = input<string>('');
+  /** Visible text for the `action` trigger. */
+  readonly triggerLabel = input<string>('');
 
   readonly select = output<string>();
+  /** Emits whenever the panel opens/closes, so a parent can lift its stacking. */
+  readonly openChange = output<boolean>();
 
   private readonly host = inject(ElementRef<HTMLElement>);
 
   protected readonly open = signal(false);
   protected readonly panelAlign = computed(() => this.align());
+
+  constructor() {
+    // mirror open-state to the parent regardless of how it changed
+    effect(() => this.openChange.emit(this.open()));
+  }
 
   protected toggle(event: MouseEvent): void {
     event.stopPropagation();
