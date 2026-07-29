@@ -1,0 +1,92 @@
+:host {
+  position: relative;
+  display: inline-flex;
+}
+
+.menu__trigger--on {
+  background: var(--kn-surface-hover);
+  color: var(--kn-text);
+}
+
+.menu__panel {
+  position: absolute;
+  top: calc(100% + 0.35rem);
+  right: 0;
+  z-index: 20;
+  min-width: 9rem;
+  padding: 0.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  border-radius: var(--kn-radius-sm);
+  background: var(--kn-surface-2);
+  border: 1px solid var(--kn-border-strong);
+  box-shadow: var(--kn-shadow);
+  animation: menu-in 0.13s ease;
+  transform-origin: top right;
+}
+.menu__panel--start {
+  right: auto;
+  left: 0;
+  transform-origin: top left;
+}
+
+.menu__item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 0.5rem 0.6rem;
+  border: none;
+  border-radius: var(--kn-radius-btn);
+  background: transparent;
+  color: var(--kn-text);
+  font: inherit;
+  font-size: 0.85rem;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background 0.12s ease,
+    color 0.12s ease;
+}
+.menu__item:hover:not(:disabled),
+.menu__item:focus-visible {
+  background: var(--kn-surface-hover);
+}
+.menu__item:disabled {
+  color: var(--kn-text-faint);
+  cursor: default;
+}
+
+.menu__item-icon {
+  flex: 0 0 auto;
+  color: var(--kn-text-muted);
+}
+
+.menu__item--danger {
+  color: var(--kn-danger);
+}
+.menu__item--danger .menu__item-icon {
+  color: var(--kn-danger);
+}
+.menu__item--danger:hover:not(:disabled),
+.menu__item--danger:focus-visible {
+  background: var(--kn-danger-soft);
+}
+
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu__panel {
+    animation: none;
+  }
+}

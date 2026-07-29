@@ -21,3 +21,56 @@
 .grid__empty {
   grid-column: 1 / -1;
 }
+
+/* floating bulk-action bar — appears while any card is selected */
+.selbar {
+  position: fixed;
+  left: 50%;
+  bottom: clamp(1rem, 4vw, 2rem);
+  transform: translateX(-50%);
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.6rem 0.5rem 1rem;
+  border-radius: 999px;
+  background: var(--kn-surface-2);
+  border: 1px solid var(--kn-border-strong);
+  box-shadow: var(--kn-shadow);
+  animation: selbar-in 0.2s ease;
+}
+
+.selbar__count {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--kn-text);
+  white-space: nowrap;
+}
+
+.selbar__divider {
+  width: 1px;
+  align-self: stretch;
+  margin: 0.15rem 0.15rem;
+  background: var(--kn-border-strong);
+}
+
+.selbar__clear {
+  color: var(--kn-text-faint);
+}
+
+@keyframes selbar-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 12px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .selbar {
+    animation: none;
+  }
+}

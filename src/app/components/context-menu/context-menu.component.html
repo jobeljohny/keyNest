@@ -1,0 +1,38 @@
+<button
+  type="button"
+  class="icon-btn icon-btn--sm menu__trigger"
+  [class.menu__trigger--on]="open()"
+  [attr.aria-label]="label()"
+  [attr.aria-expanded]="open()"
+  aria-haspopup="menu"
+  [title]="label()"
+  (click)="toggle($event)"
+>
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <circle cx="12" cy="5" r="1.8" />
+    <circle cx="12" cy="12" r="1.8" />
+    <circle cx="12" cy="19" r="1.8" />
+  </svg>
+</button>
+
+@if (open()) {
+  <div class="menu__panel" [class.menu__panel--start]="panelAlign() === 'start'" role="menu">
+    @for (item of items(); track item.id) {
+      <button
+        type="button"
+        class="menu__item"
+        [class.menu__item--danger]="item.danger"
+        [disabled]="item.disabled"
+        role="menuitem"
+        (click)="onItemClick(item, $event)"
+      >
+        @if (item.iconPath) {
+          <svg class="menu__item-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path [attr.d]="item.iconPath" />
+          </svg>
+        }
+        <span>{{ item.label }}</span>
+      </button>
+    }
+  </div>
+}
