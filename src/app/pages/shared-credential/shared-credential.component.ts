@@ -7,6 +7,7 @@ import {
   signal,
 } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { Clipboard } from '@angular/cdk/clipboard';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { EmptyStateComponent } from '../../components/empty-state/empty-state.component';
@@ -25,6 +26,7 @@ export class SharedCredentialComponent {
   private readonly shareCrypto = inject(ShareCryptoService);
   private readonly vault = inject(VaultService);
   private readonly toast = inject(ToastService);
+  private readonly clipboard = inject(Clipboard);
   private readonly router = inject(Router);
   private readonly route = inject(ActivatedRoute);
 
@@ -98,6 +100,17 @@ export class SharedCredentialComponent {
 
   protected toggleReveal(): void {
     this.revealed.update((v) => !v);
+  }
+
+  protected copy(field: 'username' | 'password'): void {
+    const value = this.shared()?.[field];
+    if (value == null) return;
+    if (this.clipboard.copy(value)) {
+      const label = field === 'username' ? 'Username' : 'Password';
+      this.toast.success(`${label} copied`);
+    } else {
+      this.toast.error('Copy failed');
+    }
   }
 
   protected async save(): Promise<void> {
