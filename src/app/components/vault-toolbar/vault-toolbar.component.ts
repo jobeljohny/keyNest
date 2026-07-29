@@ -1,8 +1,10 @@
 import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
+import { LucideDynamicIcon } from '@lucide/angular';
 
 @Component({
   selector: 'app-vault-toolbar',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [LucideDynamicIcon],
   templateUrl: './vault-toolbar.component.html',
   styleUrl: './vault-toolbar.component.scss',
 })

@@ -1,9 +1,11 @@
 import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
+import { LucideDynamicIcon } from '@lucide/angular';
 
 // used for both the empty-vault and no-search-results states
 @Component({
   selector: 'app-empty-state',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [LucideDynamicIcon],
   templateUrl: './empty-state.component.html',
   styleUrl: './empty-state.component.scss',
 })

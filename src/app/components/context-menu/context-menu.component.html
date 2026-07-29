@@ -10,9 +10,7 @@
     (click)="toggle($event)"
   >
     @if (triggerIcon()) {
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path [attr.d]="triggerIcon()" />
-      </svg>
+      <svg [lucideIcon]="triggerIcon()" [size]="16" aria-hidden="true"></svg>
     }
     <span>{{ triggerLabel() }}</span>
   </button>
@@ -27,11 +25,7 @@
     [title]="label()"
     (click)="toggle($event)"
   >
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <circle cx="12" cy="5" r="1.8" />
-      <circle cx="12" cy="12" r="1.8" />
-      <circle cx="12" cy="19" r="1.8" />
-    </svg>
+    <svg lucideIcon="ellipsis-vertical" [size]="16" aria-hidden="true"></svg>
   </button>
 }
 
@@ -46,10 +40,8 @@
         role="menuitem"
         (click)="onItemClick(item, $event)"
       >
-        @if (item.iconPath) {
-          <svg class="menu__item-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path [attr.d]="item.iconPath" />
-          </svg>
+        @if (item.icon) {
+          <svg class="menu__item-icon" [lucideIcon]="item.icon" [size]="16" aria-hidden="true"></svg>
         }
         <span>{{ item.label }}</span>
       </button>

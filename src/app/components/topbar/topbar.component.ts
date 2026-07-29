@@ -5,10 +5,12 @@ import {
   output,
   viewChild,
 } from '@angular/core';
+import { LucideDynamicIcon } from '@lucide/angular';
 
 @Component({
   selector: 'app-topbar',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [LucideDynamicIcon],
   templateUrl: './topbar.component.html',
   styleUrl: './topbar.component.scss',
 })

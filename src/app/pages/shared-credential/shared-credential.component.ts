@@ -10,6 +10,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { LucideDynamicIcon } from '@lucide/angular';
 import { EmptyStateComponent } from '../../components/empty-state/empty-state.component';
 import { ShareSecret, ShareCryptoService, UnsupportedVersionError } from '../../services/share-crypto.service';
 import { ToastService } from '../../services/toast.service';
@@ -18,7 +19,7 @@ import { VaultService } from '../../services/vault.service';
 @Component({
   selector: 'app-shared-credential',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ReactiveFormsModule, RouterLink, EmptyStateComponent],
+  imports: [ReactiveFormsModule, RouterLink, EmptyStateComponent, LucideDynamicIcon],
   templateUrl: './shared-credential.component.html',
   styleUrl: './shared-credential.component.scss',
 })

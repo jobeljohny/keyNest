@@ -10,14 +10,15 @@ import {
   output,
   signal,
 } from '@angular/core';
+import { LucideDynamicIcon } from '@lucide/angular';
 
 /** A single actionable row in the menu. */
 export interface ContextMenuItem {
   /** Stable identifier emitted on select. */
   id: string;
   label: string;
-  /** SVG path `d` string, drawn in a 24x24 stroked viewBox (matches app icons). */
-  iconPath?: string;
+  /** Lucide icon name (lower-kebab-case, e.g. `pencil`, `trash-2`). */
+  icon?: string;
   /** Renders the row in the danger color and highlights it on hover. */
   danger?: boolean;
   /** Greys out and blocks selection. */
@@ -31,6 +32,7 @@ export interface ContextMenuItem {
 @Component({
   selector: 'app-context-menu',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [LucideDynamicIcon],
   templateUrl: './context-menu.component.html',
   styleUrl: './context-menu.component.scss',
 })
@@ -46,7 +48,7 @@ export class ContextMenuComponent {
    * the menu can sit inline with the card's other footer actions.
    */
   readonly variant = input<'kebab' | 'action'>('kebab');
-  /** SVG path `d` for the `action` trigger's icon (24x24 stroked viewBox). */
+  /** Lucide icon name for the `action` trigger's icon (lower-kebab-case). */
   readonly triggerIcon = input<string>('');
   /** Visible text for the `action` trigger. */
   readonly triggerLabel = input<string>('');

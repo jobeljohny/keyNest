@@ -13,12 +13,13 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { LucideDynamicIcon } from '@lucide/angular';
 import { Credential, CredentialInput } from '../../models/credential.model';
 
 @Component({
   selector: 'app-credential-modal',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, LucideDynamicIcon],
   templateUrl: './credential-modal.component.html',
   styleUrl: './credential-modal.component.scss',
 })

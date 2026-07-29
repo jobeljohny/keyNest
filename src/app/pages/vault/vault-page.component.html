@@ -45,21 +45,15 @@
       <span class="selbar__count">{{ selectedCount() }} selected</span>
       <span class="selbar__divider" aria-hidden="true"></span>
       <button type="button" class="btn btn--ghost btn--sm" (click)="exportSelected()">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
-        </svg>
+        <svg lucideIcon="download" [size]="16" aria-hidden="true"></svg>
         <span>Export</span>
       </button>
       <button type="button" class="btn btn--danger btn--sm" (click)="deleteSelected()">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m2 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" />
-        </svg>
+        <svg lucideIcon="trash-2" [size]="16" aria-hidden="true"></svg>
         <span>Delete</span>
       </button>
       <button type="button" class="icon-btn icon-btn--sm selbar__clear" (click)="clearSelection()" aria-label="Clear selection" title="Clear selection">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M18 6 6 18M6 6l12 12" />
-        </svg>
+        <svg lucideIcon="x" [size]="16" aria-hidden="true"></svg>
       </button>
     </div>
   }

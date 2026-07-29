@@ -15,15 +15,11 @@
 
   <div class="topbar__actions">
     <button type="button" class="btn btn--ghost" (click)="triggerImport()">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
-      </svg>
+      <svg lucideIcon="download" [size]="16" aria-hidden="true"></svg>
       <span class="btn__label">Import</span>
     </button>
     <button type="button" class="btn btn--ghost" (click)="export.emit()">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 9l5-5 5 5M12 4v12" />
-      </svg>
+      <svg lucideIcon="upload" [size]="16" aria-hidden="true"></svg>
       <span class="btn__label">Export</span>
     </button>
     <input

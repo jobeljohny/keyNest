@@ -6,6 +6,7 @@ import {
   OnInit,
   signal,
 } from '@angular/core';
+import { LucideDynamicIcon } from '@lucide/angular';
 import { CredentialCardComponent } from '../../components/credential-card/credential-card.component';
 import { CredentialModalComponent } from '../../components/credential-modal/credential-modal.component';
 import { EmptyStateComponent } from '../../components/empty-state/empty-state.component';
@@ -24,6 +25,7 @@ import { VaultService } from '../../services/vault.service';
     CredentialCardComponent,
     CredentialModalComponent,
     EmptyStateComponent,
+    LucideDynamicIcon,
   ],
   templateUrl: './vault-page.component.html',
   styleUrl: './vault-page.component.scss',

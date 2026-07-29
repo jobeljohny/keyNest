@@ -1,9 +1,8 @@
 <section class="toolbar">
   <div class="search">
-    <svg class="search__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <circle cx="11" cy="11" r="7" />
-      <path d="m21 21-4.3-4.3" />
-    </svg>
+    <span class="search__icon" aria-hidden="true">
+      <svg lucideIcon="search" [size]="18"></svg>
+    </span>
     <input
       class="search__input"
       type="search"
@@ -14,9 +13,7 @@
     />
   </div>
   <button type="button" class="btn btn--primary toolbar__add" (click)="add.emit()">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
-      <path d="M12 5v14M5 12h14" />
-    </svg>
+    <svg lucideIcon="plus" [size]="18" [strokeWidth]="2.2" aria-hidden="true"></svg>
     <span>Add credential</span>
   </button>
 </section>
