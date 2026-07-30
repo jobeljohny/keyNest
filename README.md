@@ -1,59 +1,121 @@
-# KeyNest
+<div align="center">
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.4.
+<img src="public/keynest-logo.png" alt="KeyNest — Local First Vault" width="460" />
 
-## Development server
+<br />
 
-To start a local development server, run:
+**A local‑first credential vault that never phones home.**
 
-```bash
-ng serve
+Your passwords live in *your* browser. No server, no account, no sync - just an encrypted nest for your keys.
+
+<br />
+
+[![Angular](https://img.shields.io/badge/Angular-21-DD0031?style=flat-square&logo=angular&logoColor=white)](https://angular.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+[![Local First](https://img.shields.io/badge/architecture-local--first-20874c?style=flat-square)](#-why-local-first)
+
+</div>
+
+<br />
+
+## ✨ What is KeyNest?
+
+KeyNest is a single‑page credential manager built on a simple premise: **your secrets should never leave your device unless you explicitly send them.**
+
+There is no backend to trust, no account to create, and no network request to leak. Every credential is stored in your browser's own [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API) via [Dexie](https://dexie.org/). When you *want* to share one, KeyNest encrypts it in‑browser and packs the secret into the URL fragment - a part of the link the server never even sees.
+
+<br />
+
+## 🎯 Features
+
+| | |
+|---|---|
+| 🗄️ **Local‑first storage** | Credentials persist in IndexedDB. Close the tab, come back later - they're still there, still yours. |
+| 🔐 **Encrypted share links** | Share a single credential via a self‑contained link, encrypted with AES‑256‑GCM using the Web Crypto API. |
+| 🔎 **Instant search** | Filter your vault as you type. |
+| 📦 **Backup & restore** | Export your whole vault to a JSON file and import it anywhere - portable and offline. |
+| 🚫 **Duplicate guarding** | Case‑insensitive name checks stop you from nesting the same key twice. |
+| 🎨 **Crafted UI** | Deep‑navy canvas, elevated cards, and a considered token‑driven design system. |
+
+<br />
+
+## 🛡️ Why local‑first?
+
+Most password tools ask you to hand your secrets to *their* servers and *their* security posture. KeyNest flips that:
+
+- **No backend.** There is no server-side code - nothing to breach, subpoena, or bill you for.
+- **No account.** Nothing to sign up for, nothing to phone home.
+- **No telemetry.** The app makes zero network calls with your data.
+- **You own the file.** Backups are plain, portable JSON that you control.
+
+The trade‑off is honest: your vault lives in one browser profile. Backups are how you move between devices - deliberately, on your terms.
+
+<br />
+
+## 🔗 How sharing works
+
+Sharing is the one time a credential leaves your vault - and even then, the server never sees the secret.
+
+```
+        ┌─────────────────────────────────────────────────────────┐
+        │  .../share/github#<version><iv><key><ciphertext>         │
+        └───────────────────────────┬─────────────────────────────┘
+                    slug (display)   │   URL fragment - never sent to any server
+                                     ▼
+        AES‑256‑GCM · encrypted in your browser · Web Crypto API
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+1. KeyNest generates a fresh **AES‑256‑GCM** key and encrypts the username + password entirely in your browser.
+2. The version byte, IV, raw key, and ciphertext are packed into a compact binary blob and placed in the URL **fragment** (`#…`).
+3. Because browsers never transmit the fragment over the network, the secret is readable only by whoever holds the *complete* link.
+4. Opening the link decrypts the payload client‑side and shows the credential — with the option to save it into that browser's own vault.
 
-## Code scaffolding
+> A share link is a bearer token: anyone with the full URL can read it. Send it over a trusted channel, and don't paste it where servers log full URLs.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+<br />
 
-```bash
-ng generate component component-name
-```
+## 🚀 Getting started
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+**Prerequisites:** [Node.js](https://nodejs.org) 20+ and npm.
 
 ```bash
-ng build
+# 1. Install dependencies
+npm install
+
+# 2. Start the dev server
+npm start
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Then open **http://localhost:4200** - the app hot‑reloads as you edit.
 
-## Running unit tests
+<br />
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+## 🧰 Scripts
 
-```bash
-ng test
-```
+| Command | What it does |
+|---------|--------------|
+| `npm start` | Run the dev server at `localhost:4200` with live reload. |
+| `npm run build` | Production build, optimized into `dist/`. |
+| `npm run watch` | Development build that rebuilds on change. |
+| `npm test` | Run unit tests with [Vitest](https://vitest.dev). |
 
-## Running end-to-end tests
+<br />
 
-For end-to-end (e2e) testing, run:
+## 🏗️ Tech stack
 
-```bash
-ng e2e
-```
+- **[Angular 21](https://angular.dev)** — standalone components, signals, and `OnPush` change detection throughout.
+- **[Dexie](https://dexie.org/)** — a graceful wrapper over IndexedDB for local persistence.
+- **[Web Crypto API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API)** — native AES‑256‑GCM, no crypto libraries in the bundle.
+- **[Lucide](https://lucide.dev)** — clean, consistent iconography.
+- **[Vitest](https://vitest.dev)** — fast unit testing.
+- **TypeScript 5.9** in strict mode.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+<br />
 
-## Additional Resources
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+<div align="center">
+
+Made with care · **KeyNest** - *Local First Vault*
+
+</div>
