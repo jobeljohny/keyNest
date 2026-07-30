@@ -18,37 +18,11 @@
   gap: 0.7rem;
 }
 
-.brand__mark {
-  display: grid;
-  place-items: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 14px;
-  color: var(--kn-accent-ink);
-  background: linear-gradient(135deg, var(--kn-accent-hover), var(--kn-amber));
-  box-shadow: 0 8px 20px -12px rgba(63, 185, 107, 0.8);
-}
-
-.brand__text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.1;
-}
-
-.brand__name {
-  font-size: 1.25rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-}
-
-.brand__accent {
-  color: var(--kn-accent-hover);
-}
-
-.brand__tag {
-  font-size: 0.72rem;
-  color: var(--kn-text-faint);
-  letter-spacing: 0.02em;
+.brand__logo {
+  display: block;
+  height: 3.5rem;
+  width: auto;
+  filter: brightness(1.35) saturate(1.05);
 }
 
 .topbar__actions {
@@ -69,8 +43,8 @@
 }
 
 @media (max-width: 560px) {
-  .brand__tag {
-    display: none;
+  .brand__logo {
+    height: 2.25rem;
   }
   .btn__label {
     display: none;
