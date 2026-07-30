@@ -10,6 +10,11 @@ Your passwords live in *your* browser. No server, no account, no sync - just an 
 
 <br />
 
+### [🚀 Launch the live app →](https://keynestapp.pages.dev)
+
+<br />
+
+[![Live App](https://img.shields.io/badge/live-keynestapp.pages.dev-20874c?style=flat-square&logo=cloudflarepages&logoColor=white)](https://keynestapp.pages.dev)
 [![Angular](https://img.shields.io/badge/Angular-21-DD0031?style=flat-square&logo=angular&logoColor=white)](https://angular.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
 [![Local First](https://img.shields.io/badge/architecture-local--first-20874c?style=flat-square)](#-why-local-first)
